@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIOP VISUALS AI</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080d1b;color:white;
+ font-family:Arial,sans-serif;padding:20px;
+}
+header{text-align:center;padding:20px}
+h1{color:#2584ff}
+.card{
+ background:#111c32;padding:20px;
+ border-radius:16px;margin:15px 0;
+}
+button{
+ background:#1769ff;color:white;border:0;
+ padding:14px;border-radius:10px;
+ width:100%;font-weight:bold;margin-top:12px;
+}
+input,select{
+ width:100%;padding:13px;margin-top:12px;
+ border-radius:9px;border:1px solid #344563;
+ background:#0b1428;color:white;
+}
+video{width:100%;margin-top:15px;border-radius:12px}
+small{color:#a8b8d4}
+</style>
+</head>
+<body>
 
+<header>
+<h1> DIOP VISUALS AI </h1>
+<p>Ton studio intelligent de création vidéo</p>
+<small>Crée. Modifie. Partage.</small>
+</header>
+
+<div class="card">
+<h2>🎬 Créer une vidéo</h2>
+<p>Importe ta vidéo depuis ton téléphone.</p>
+<input type="file" id="videoFile" accept="video/*">
+<video id="preview" controls hidden></video>
+</div>
+
+<div class="card">
+<h2>✨ Personnaliser</h2>
+<label>Texte de ta vidéo</label>
+<input id="caption" placeholder="Écris ton texte ici">
+
+<label>Format vidéo</label>
+<select id="format">
+<option>9:16 - TikTok</option>
+<option>1:1 - Carré</option>
+<option>16:9 - YouTube</option>
+</select>
+
+<button onclick="showText()">Afficher mon texte</button>
+<p id="result"></p>
+</div>
+
+<div class="card">
+<h2>🚀 DIOP VISUALS AI</h2>
+<p>Ton espace de création vidéo.</p>
+<button onclick="alert('Bienvenue dans DIOP VISUALS AI !')">
+Commencer
+</button>
+</div>
+
+<script>
+const file=document.getElementById('videoFile');
+const preview=document.getElementById('preview');
+
+file.addEventListener('change',()=>{
+ if(file.files[0]){
+  preview.src=URL.createObjectURL(file.files[0]);
+  preview.hidden=false;
+ }
+});
+
+function showText(){
+ const caption=document.getElementById('caption').value;
+ document.getElementById('result').textContent=
+ caption || "Ajoute un texte à ta vidéo.";
+}
+</script>
+
+</body>
+</html>
